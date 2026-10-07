@@ -1,0 +1,6 @@
+Manifest-Version: 1.0
+Main-Class: org.fijical.lite.Main
+Class-Path: groovy-4.0.28.jar groovy-json-4.0.28.jar ij-1.54p.jar
+Implementation-Title: FijiCal Lite 0.9 - Mamanuca
+Implementation-Version: 0.9
+
