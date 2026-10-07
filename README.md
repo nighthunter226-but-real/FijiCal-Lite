@@ -16,6 +16,8 @@ FijiCal Lite is a portable Windows application for calibrating microscopy images
 
 ## Start the portable app
 
+**[Download the v0.9 Mamanuca portable ZIP](https://github.com/nighthunter226-but-real/FijiCal-Lite/releases/download/v0.9/FijiCal.Lite.0.9.-.Mamanuca.with.Lightroom.Bridge.zip)** · [Release notes and checksum](https://github.com/nighthunter226-but-real/FijiCal-Lite/releases/tag/v0.9)
+
 1. Extract the complete portable ZIP into a writable folder.
 2. Open the extracted **FijiCal Lite** folder and double-click **FijiCal Lite.exe**.
 3. Keep the executable together with its `app` and `runtime` folders. Java, Groovy, and ImageJ are bundled; no separate Fiji or Java installation is needed.
