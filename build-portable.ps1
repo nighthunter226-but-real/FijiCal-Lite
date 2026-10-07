@@ -15,6 +15,11 @@ foreach ($required in @('FijiCal Lite.exe','app\groovy-4.0.28.jar','app\groovy-j
 }
 New-Item -ItemType Directory -Path $classes -Force | Out-Null
 Copy-Item -LiteralPath $baseline -Destination $portable -Recurse
+$legacyScript = [IO.Path]::GetFullPath((Join-Path $portable 'app\FijiCal_Lite_Taveuni.groovy'))
+if (!$legacyScript.StartsWith([IO.Path]::GetFullPath($buildRoot) + [IO.Path]::DirectorySeparatorChar, [StringComparison]::OrdinalIgnoreCase)) {
+    throw 'Legacy script cleanup must stay inside the new build folder.'
+}
+if (Test-Path -LiteralPath $legacyScript) { Remove-Item -LiteralPath $legacyScript }
 $classpath = Join-Path $portable 'app\*'
 & (Join-Path $jdk 'bin\javac.exe') -encoding UTF-8 -cp $classpath -d $classes `
     (Join-Path $projectRoot 'launcher\src\org\fijical\lite\Main.java') `
@@ -26,6 +31,10 @@ if ($LASTEXITCODE -ne 0) { throw 'Launcher tests failed.' }
     --manifest (Join-Path $projectRoot 'launcher\launcher-manifest.mf') -C $classes org\fijical\lite\Main.class
 if ($LASTEXITCODE -ne 0) { throw 'Launcher packaging failed.' }
 Copy-Item -Path (Join-Path $projectRoot 'app\*') -Destination (Join-Path $portable 'app') -Force
+& (Join-Path $jdk 'bin\java.exe') -cp $classpath groovy.ui.GroovyMain -e `
+    "def file=new File(args[0]); new GroovyClassLoader(this.class.classLoader).parseClass(file.readLines('UTF-8').drop(1).join(System.lineSeparator()),file.name); println 'Mamanuca script compilation passed'" `
+    (Join-Path $portable 'app\FijiCal_Lite_Mamanuca.groovy')
+if ($LASTEXITCODE -ne 0) { throw 'Mamanuca script compilation failed.' }
 $plugin = Join-Path $portable 'Export to FijiCal.lrplugin'
 New-Item -ItemType Directory -Path $plugin -Force | Out-Null
 Copy-Item -Path (Join-Path $projectRoot 'lightroom\Export to FijiCal.lrplugin\*') -Destination $plugin -Force

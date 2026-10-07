@@ -37,7 +37,7 @@ public final class Main {
             boolean portable = Boolean.getBoolean("fijical.portable");
             Path dataDirectory = dataDirectory(portable);
             logDirectory = logDirectory(portable);
-            Path script = appDirectory.resolve("FijiCal_Lite_Taveuni.groovy");
+            Path script = appDirectory.resolve("FijiCal_Lite_Mamanuca.groovy");
             if (!Files.isRegularFile(script)) {
                 throw new IllegalStateException("The bundled application script was not found: " + script);
             }

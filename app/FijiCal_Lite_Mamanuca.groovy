@@ -37,7 +37,7 @@ import java.util.Locale
 import java.util.concurrent.atomic.AtomicBoolean
 import java.util.prefs.Preferences
 
-/* FijiCal Lite — Taveuni runnable UI prototype. */
+/* FijiCal Lite 0.9 — Mamanuca microscopy calibration and scale-bar workspace. */
 
 @CompileStatic
 class AwtGeometry {
