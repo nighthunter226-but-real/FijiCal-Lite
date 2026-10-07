@@ -1,4 +1,7 @@
 #@Context context
+// SPDX-License-Identifier: GPL-3.0-or-later
+// Copyright (C) 2026 nighthunter226-but-real and FijiCal Lite contributors.
+// Distributed without warranty; see LICENSE and COPYRIGHT.md.
 
 import groovy.json.JsonOutput
 import groovy.json.JsonSlurper

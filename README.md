@@ -14,6 +14,22 @@ FijiCal Lite is a portable Windows application for calibrating microscopy images
 - Export individual copies or batches with naming, resizing, format, and filename-conflict options.
 - Organise presets into collections and import or export JSON preset packs.
 
+## Licence and third-party components
+
+FijiCal Lite's original code is licensed under **GNU GPL version 3 or later**,
+without warranty. You may use, modify, and redistribute it under those terms.
+See [LICENSE](LICENSE) and [COPYRIGHT.md](COPYRIGHT.md).
+
+This app bundles public-domain ImageJ 1.x, not the full Fiji distribution.
+Groovy and the Java runtime retain their own licences. See
+[THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+
+**Licensing audit in progress:** the original v0.9 downloadable ZIP predates
+these notices. Its exact Azul runtime/native-launcher corresponding source
+has not yet been verified. See [SOURCE_DISTRIBUTION.md](SOURCE_DISTRIBUTION.md)
+before making another portable release; repository changes alone do not fix
+the already-published ZIP.
+
 ## Start the portable app
 
 **[Download the v0.9 Mamanuca portable ZIP](https://github.com/nighthunter226-but-real/FijiCal-Lite/releases/download/v0.9/FijiCal.Lite.0.9.-.Mamanuca.with.Lightroom.Bridge.zip)** · [Release notes and checksum](https://github.com/nighthunter226-but-real/FijiCal-Lite/releases/tag/v0.9)
@@ -89,10 +105,10 @@ After a plug-in update, use **Reload Plug-in** in Plug-in Manager. If images do 
 The source tree contains `app/FijiCal_Lite_Mamanuca.groovy`, the Java launcher, and the Lightroom plug-in. The build script uses an existing Windows portable as the baseline for its native executable, bundled runtime, Groovy 4.0.28, and ImageJ 1.54p. A JDK supporting Java 17 or later is needed to compile the launcher; its output must be compatible with the baseline runtime.
 
 ```powershell
-.\build-portable.ps1 -BasePortable 'C:\Tools\FijiCal Lite' -JdkRoot 'C:\Tools\jdk-21'
+.\build-portable.ps1 -BasePortable 'C:\Tools\FijiCal Lite' -JdkRoot 'C:\Tools\jdk-21' -RuntimeSourceArchive 'C:\Sources\reviewed-zulu-complete-source.zip'
 ```
 
-Each build creates a fresh folder under `build/`, compiles and tests the launcher, compiles the Mamanuca script, and produces a portable ZIP with a SHA-256 checksum. Generated binaries and personal portable settings are excluded from Git.
+Each build creates a fresh folder under `build/`, compiles and tests the launcher, compiles the Mamanuca script, and produces a portable ZIP with a SHA-256 checksum. It includes FijiCal source and licence notices and stages a runtime-source companion asset, which must also be published. The runtime-source input must be reviewed complete corresponding source for the exact bundled runtime and native launcher, not merely JDK `src.zip`. See [SOURCE_DISTRIBUTION.md](SOURCE_DISTRIBUTION.md). Generated binaries and personal portable settings are excluded from Git.
 
 To launch images from another application, pass their quoted paths:
 

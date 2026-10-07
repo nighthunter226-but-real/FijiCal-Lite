@@ -1,4 +1,7 @@
 #@Context context
+// SPDX-License-Identifier: GPL-3.0-or-later
+// Copyright (C) 2026 nighthunter226-but-real and FijiCal Lite contributors.
+// Distributed without warranty; see LICENSE and COPYRIGHT.md.
 
 import groovy.json.JsonSlurper
 import groovy.json.JsonOutput
@@ -1588,14 +1591,16 @@ aboutItem.addActionListener {
 
 Microscopy calibration and scale bars without the menu archaeology.
 
-FijiCal Lite adds no special licensing restrictions above the Fiji/ImageJ
-components it distributes. Those components retain their original open-source
-licences; full licence notices are included with this application.
+Copyright (C) 2026 nighthunter226-but-real and FijiCal Lite contributors.
+FijiCal Lite is free software under GNU GPL version 3 or later.
+You may modify and redistribute it under those terms. There is NO WARRANTY.
+Read LICENSE beside the executable for the complete terms.
+Bundled components retain their own terms; see THIRD_PARTY_NOTICES.md.
 
 If you reuse, modify, teach with, or redistribute FijiCal Lite, please give
 the project a nod. Ideas and improvements are warmly welcome.
 
-Support link coming soon.''')
+Source and support: github.com/nighthunter226-but-real/FijiCal-Lite''')
     aboutText.editable=false; aboutText.opaque=false; aboutText.foreground=TEXT
     aboutText.font=new Font(Font.SANS_SERIF,Font.PLAIN,13); aboutText.rows=14; aboutText.columns=60
     Object[] aboutActions=['Close','Totally Serious User Licence…'] as Object[]
@@ -1609,8 +1614,9 @@ guardian of your first-born child — or, at the very least, provide a picture
 drawn by them.
 
 This oath is ceremonial, legally meaningless, and fully satisfied by a nice
-doodle. The actual licensing terms are the open-source notices bundled with
-the application.''','Totally Serious User Licence',JOptionPane.PLAIN_MESSAGE)
+doodle. This joke adds no legal conditions. Actual terms: GNU GPL version 3
+or later in LICENSE; third-party terms in THIRD_PARTY_NOTICES.md.''',
+            'Totally Serious User Licence',JOptionPane.PLAIN_MESSAGE)
     }
 }
 

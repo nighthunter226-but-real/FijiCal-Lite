@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+// Copyright (C) 2026 nighthunter226-but-real and FijiCal Lite contributors.
+// Distributed without warranty; see LICENSE and COPYRIGHT.md.
 package org.fijical.lite;
 
 import groovy.lang.Binding;
